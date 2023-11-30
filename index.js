@@ -9,21 +9,18 @@ const questions = [
         type: "input",
         name: "title",
         message: "What is the title of your project?",
-        check: checkInput,
     },
     // Description
     {
         type: "input",
         name: "description",
         message: "Please enter a description of your project.",
-        check: checkInput,
     },
     //Installation
     {
         type: "input",
         name: "installation",
         message: "Please enter an explanation of how to install the software, or commands needed for the program.",
-        check: checkInput,
     },
 
     //Usage
@@ -31,7 +28,6 @@ const questions = [
         type: "input",
         name: "usage",
         message: "Please describe how we can use your application.",
-        check: checkInput,
     },
 
     //License 
@@ -48,7 +44,6 @@ const questions = [
             "GNU LGPLv3",
             "Mozilla",
         ],
-        check: checkInput,
     },
 
     //Contributing 
@@ -56,7 +51,6 @@ const questions = [
         type: "input",
         name: "contributing",
         message: "How can users contribute to your application.",
-        check: checkInput,
     },
 
     //Tests
@@ -64,7 +58,6 @@ const questions = [
         type: "input",
         name: "tests",
         message: "Please enter any test you would like for this project.",
-        check: checkInput,
     },
 
     //github 
@@ -72,7 +65,7 @@ const questions = [
         type: "input",
         name: "userName",
         message: "What is your GitHub username?",
-        check: checkInput,
+
     },
 
     //email address
@@ -80,13 +73,21 @@ const questions = [
         type: "input",
         name: "userEmail",
         message: "What is your GitHub email address that contributors may contact?",
-        check: checkInput,
     },
 ];
 
 
+
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, generateMarkdown(data), (err) =>{
+        if (err) {
+            return console.log(err);
+        } else {
+            return console.log("Success");
+        }
+    });
+}
 
 // TODO: Create a function to initialize app
 function init() { }
